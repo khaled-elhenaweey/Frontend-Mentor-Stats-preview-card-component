@@ -1,0 +1,181 @@
+// style variables
+$dark-blue: hsl(233, 47%, 7%); //main background color
+$blue: hsl(244, 38%, 16%); //card background color
+$soft-violet: hsl(277, 64%, 61%); // accent
+$white: hsl(0, 0%, 100%); // main heading, stats
+$white-75: hsla(0, 0%, 100%, 0.75); // main paragraph
+$white-60: hsla(0, 0%, 100%, 0.6); // stat headings 
+// font 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+// file data 
+.attribution {
+  font-size: 12px;
+  text-align: center;
+  background-color: $soft-violet;
+  color: $white;
+  padding: 8px 0;
+
+  a {
+    color: $dark-blue;
+    font-weight: 700;
+  }
+}
+
+// challenge section
+.main-preview {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 200px repeat(8, 1fr) 200px;
+  grid-auto-rows: 1fr;
+  grid-template-areas: ". c c c c c c c c .";
+  justify-content: center;
+  align-items: center;
+  background-color: $dark-blue;
+  font-family: 'Lexend Deca', sans-serif;
+
+  .card {
+    grid-area: c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .card-data {
+      padding: 50px;
+
+      .title {
+        color: $white;
+        font-weight: 700;
+
+        span {
+          color: $soft-violet;
+        }
+      }
+
+      .info {
+        color: $white-75;
+        font-size: 15px;
+        font-weight: 400;
+        margin-top: 26px;
+        line-height: 24px;
+      }
+
+      .stats-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 30px;
+        margin-top: 60px;
+
+        .stats-item {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
+          font-family: 'Inter', sans-serif;
+          text-transform: uppercase;
+
+          .stats-number {
+            color: $white;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 0;
+          }
+
+          .stats-name {
+            color: $white-60;
+            font-size: 12px;
+            font-weight: 400;
+
+            margin-top: 8px;
+          }
+        }
+
+      }
+    }
+
+    .img-container {
+      position: relative;
+
+      .card-img {}
+
+      .img-overlay {
+        background-color: rgba($color: $soft-violet, $alpha: 0.65);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
+// mobile view
+@media screen and (max-width: 376px) {
+  .main-preview {
+    grid-template-columns: 12px 1fr 12px;
+    grid-template-areas: ". c .";
+    height: 100%;
+
+
+    .card {
+      margin: 16px 0;
+      flex-direction: column-reverse;
+
+      .card-data {
+        padding: 16px;
+        text-align: center;
+
+        .title {
+          font-size: 26px;
+        }
+
+        .info {
+          font-size: 14px;
+          margin-top: 20px;
+        }
+
+        .stats-container {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding-right: 0px;
+          margin-top: 30px;
+
+          .stats-item {
+            justify-content: center;
+            align-items: center;
+
+
+            .stats-number {
+              font-size: 22px;
+            }
+
+            .stats-name {
+              font-size: 12px;
+            }
+          }
+
+        }
+      }
+
+      .img-container {
+        .card-img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
